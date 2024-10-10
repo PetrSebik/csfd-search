@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'django_components',
-    'crispy_bootstrap5',
-    'crispy_forms',
     'apps.movies',
 ]
 
