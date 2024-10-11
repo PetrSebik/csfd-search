@@ -16,8 +16,8 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         if query:
             normalized_query = remove_accents(query)
-            context['movies'] = Movie.objects.filter(name__icontains=normalized_query).all()
-            context['actors'] = Actor.objects.filter(name__icontains=normalized_query).all()
+            context['movies'] = Movie.objects.filter(name_unaccented__icontains=normalized_query).all()
+            context['actors'] = Actor.objects.filter(name_unaccented__icontains=normalized_query).all()
         context['search_form'] = SearchForm(initial=self.request.GET or None)
         return context
 

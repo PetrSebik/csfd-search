@@ -1,15 +1,21 @@
 from django.db import models
+from apps.movies.utils import remove_accents
 
 
 class Movie(models.Model):
     name = models.CharField(max_length=128)
+    name_unaccented = models.CharField(max_length=128)
     actors = models.ManyToManyField("Actor", related_name="movies")
+
+    def save(self, *args, **kwargs):
+        self.name_unaccented = remove_accents(self.name)
+        super().save(*args, **kwargs)
 
 
 class Actor(models.Model):
     name = models.CharField(max_length=128)
+    name_unaccented = models.CharField(max_length=128)
 
-
-class Unaccent(models.Func):
-    function = 'unaccent'
-    template = '%(function)s(%(expressions)s)'
+    def save(self, *args, **kwargs):
+        self.name_unaccented = remove_accents(self.name)
+        super().save(*args, **kwargs)

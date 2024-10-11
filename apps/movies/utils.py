@@ -1,7 +1,7 @@
 import unicodedata
 
 
-def remove_accents(input_str):
+def remove_accents(input_str) -> str:
     """
     Removes accents from the input string using Unicode normalization.
     """
