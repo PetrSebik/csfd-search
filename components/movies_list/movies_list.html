@@ -1,0 +1,10 @@
+{% load static %}
+<ul>
+    {% for movie in movies %}
+        <li>
+            <a class="text-decoration-none text-black" href="{% url "movie_view" pk=movie.pk %}">
+                {{ movie.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

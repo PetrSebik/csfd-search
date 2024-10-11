@@ -1,5 +1,24 @@
-{% extends "search_base.html" %}
+{% extends "base.html" %}
+{% load component_tags %}
 
-{% block search_url %}
-    {% url 'search' %}
+{% block body %}
+    {% component "search_form" %}{% endcomponent %}
+    <div class="row mx-2" id="cards-container">
+        {% if movies %}
+            {% component "card" %}
+                {% fill "card_header" %}Movies:{% endfill %}
+                {% fill "card_body" %}
+                    {% component "movies_list" %}{% endcomponent %}
+                {% endfill %}
+            {% endcomponent %}
+        {% endif %}
+        {% if actors %}
+            {% component "card" %}
+                {% fill "card_header" %}Actors:{% endfill %}
+                {% fill "card_body" %}
+                    {% component "actors_list" %}{% endcomponent %}
+                {% endfill %}
+            {% endcomponent %}
+        {% endif %}
+    </div>
 {% endblock %}

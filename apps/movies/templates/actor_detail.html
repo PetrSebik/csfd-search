@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load component_tags %}
+
+{% block body %}
+    <div class="row m-2 pt-4 justify-content-center align-content-center" id="cards-container">
+        {% component "card" %}
+            {% fill "card_header" %}{{ actor.name }}{% endfill %}
+            {% fill "card_body" %}
+                <h6>Movies:</h6>
+                {% with actor.movies.all as movies %}
+                    {% component "movies_list" %}{% endcomponent %}
+                {% endwith %}
+            {% endfill %}
+        {% endcomponent %}
+    </div>
+{% endblock %}

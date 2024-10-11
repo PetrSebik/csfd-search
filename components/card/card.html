@@ -1,15 +1,13 @@
-<div class="col-md-4 mb-4">
+{% load component_tags %}
+
+<div class="col-md-6 mb-4">
     <div class="card h-100">
         <div class="card-body">
-            <h5 class="card-title">{{ movie.name }}</h5>
+            <h5 class="card-title">
+                {% slot "card_header" %}{% endslot %}
+            </h5>
             <p class="card-text">
-                {% for actor in movie.actors.all %}
-                    {% if forloop.last %}
-                        {{ actor.name }}
-                    {% else %}
-                        {{ actor.name }},
-                    {% endif %}
-                {% endfor %}
+                {% slot "card_body" %}{% endslot %}
             </p>
         </div>
     </div>

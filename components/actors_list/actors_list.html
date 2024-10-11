@@ -1,0 +1,10 @@
+{% load static %}
+<ul>
+    {% for actor in actors %}
+        <li>
+            <a class="text-decoration-none text-black" href="{% url "actor_view" pk=actor.pk %}">
+                {{ actor.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
